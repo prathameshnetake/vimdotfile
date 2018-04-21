@@ -147,12 +147,13 @@ let g:go_fmt_command = "goimports"
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck']
 \}
 
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_fix)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,3 +161,23 @@ nmap <silent> <leader>a <Plug>(ale_next_wrap)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['eslint']
+
+let g:user_emmet_settings = {
+  \  'indentation' : '  ',
+  \  'perl' : {
+  \    'aliases' : {
+  \      'req' : 'require '
+  \    },
+  \    'snippets' : {
+  \      'use' : "use strict\nuse warnings\n\n",
+  \      'warn' : "warn \"|\";",
+  \    }
+  \  }
+  \}
+
+  let g:user_emmet_expandabbr_key = '<c-e>'
+
+  let g:use_emmet_complete_tag = 1
